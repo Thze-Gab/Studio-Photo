@@ -1,0 +1,5 @@
+{
+  "name": "AI Studio",
+  "description": "An application that transforms images of people into photorealistic studio photographs or artistique photographs using AI. Users can optionally change the person's dress and provide a custom custom  informations.",
+  "requestFramePermissions": []
+}

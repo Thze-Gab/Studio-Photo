@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Studio Photo Booth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1e1b4b; /* Fallback */
+    background-image: radial-gradient(at top left, hsl(260 80% 15%), hsl(240 60% 10%));
+  }
+  
+  /* Custom Range Slider Styles */
+  input[type=range] {
+    --value: 50;
+    --min: 0;
+    --max: 100;
+    --p: calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100);
+    --bg: rgba(255, 255, 255, 0.1);
+    --fill: #00FFF7; /* Cyan Accent */
+    
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Webkit (Chrome, Safari) */
+  input[type=range]::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, var(--fill) 0%, var(--fill) calc(var(--p) * 1%), var(--bg) calc(var(--p) * 1%), var(--bg) 100%);
+    height: 0.25rem;
+    border-radius: 0.5rem;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -6px; /* Center thumb on track */
+    background-color: var(--fill);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 12px #7B3CFF, 0 0 4px #00FFF7; /* Violet and Cyan glow */
+  }
+
+  /* Firefox */
+  input[type=range]::-moz-range-track {
+    background: linear-gradient(to right, var(--fill) 0%, var(--fill) calc(var(--p) * 1%), var(--bg) calc(var(--p) * 1%), var(--bg) 100%);
+    height: 0.25rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+  input[type=range]::-moz-range-thumb {
+    background-color: var(--fill);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    border: none;
+    box-shadow: 0 0 12px #7B3CFF, 0 0 4px #00FFF7;
+  }
+
+  /* Keyframes for slide-up animation used in OutputDisplay */
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out forwards;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-primary-dark">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

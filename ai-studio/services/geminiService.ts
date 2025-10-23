@@ -9,6 +9,11 @@ import {
   Aperture, ShutterSpeed, ISO, FocusMode, LensType, ShootingMode
 } from '../types';
 
+import dotenv from "dotenv";
+dotenv.config();
+
+const API_KEY = process.env.GOOGLE_API_KEY;
+
 let aiAndModulePromise: Promise<{
     ai: any; // GoogleGenAI instance
     Modality: any;
